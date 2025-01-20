@@ -6,7 +6,9 @@ export default createStore({
   },
   mutations: {
     addBook(state, book) {
-      state.books.push(book);
+      // Генерируем уникальный ID для новой книги, если его нет
+      const newBook = { ...book, id: book.id || Date.now() }; // Генерируем ID, если его нет
+      state.books.push(newBook);
       localStorage.setItem('books', JSON.stringify(state.books)); 
     },
     updateBook(state, updatedBook) {
@@ -28,6 +30,8 @@ export default createStore({
       });
     },
   },
+  
+  
   actions: {
     addBook({ commit }, book) {
       commit('addBook', book);
@@ -48,5 +52,6 @@ export default createStore({
         book.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     },
+
   }
 });
