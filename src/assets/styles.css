@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans bg-[#0F172A] m-0 p-0;
+}
+
+/* #app {
+
+} */
+
+@media (max-width: 600px) {
+  #app {
+    padding: 10px;
+  }
+}
+
